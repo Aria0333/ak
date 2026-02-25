@@ -4,61 +4,65 @@
 <title>For Kriziii</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
 body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
-    font-family: Georgia, serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    font-family: 'Dancing Script', cursive;
+
+    /* Minecraft cinematic background */
+    background: 
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
+        url('bg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-/* cinematic glow */
-body::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(255,150,200,0.2), transparent 60%);
-}
-
-/* polaroid */
+/* Polaroid with warm Minecraft gradient border */
 .container {
-    background: white;
-    padding: 20px 20px 50px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    background: linear-gradient(145deg, #8b5a3c, #d2a679);
+    padding: 12px;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.7);
     transform: rotate(-3deg);
-    text-align: center;
     animation: float 4s ease-in-out infinite;
 }
 
-.container img {
-    width: 300px;
+/* Inner white area */
+.inner {
+    background: #fff;
+    padding: 20px 20px 50px;
+    text-align: center;
 }
 
+.inner img {
+    width: 300px;
+    display: block;
+}
+
+/* Cursive text */
 .text {
     margin-top: 15px;
-    font-size: 26px;
-    color: #ff3b7a;
-    font-weight: bold;
+    font-size: 32px;
+    color: white;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.6);
 }
 
-.name {
-    position: absolute;
-    bottom: 40px;
-    width: 100%;
-    text-align: center;
-    color: rgba(255,255,255,0.15);
-    font-size: 80px;
-    letter-spacing: 10px;
+/* Floating animation */
+@keyframes float {
+    0%,100% { transform: rotate(-3deg) translateY(0); }
+    50% { transform: rotate(-3deg) translateY(-10px); }
 }
 
+/* Soft floating hearts */
 .heart {
     position: absolute;
-    color: #ff4d88;
-    font-size: 20px;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
     animation: rise 6s linear infinite;
 }
 
@@ -66,22 +70,17 @@ body::before {
     from { transform: translateY(100vh); opacity: 1; }
     to { transform: translateY(-10vh); opacity: 0; }
 }
-
-@keyframes float {
-    0%,100% { transform: rotate(-3deg) translateY(0); }
-    50% { transform: rotate(-3deg) translateY(-10px); }
-}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <img src="ourphoto.jpg">
-    <div class="text">i lob u kriziii &lt;3</div>
+    <div class="inner">
+        <img src="ourphoto.jpg">
+        <div class="text">i lob u kriziii &lt;3</div>
+    </div>
 </div>
-
-<div class="name">KRIZIII</div>
 
 <script>
 function createHeart() {
@@ -89,11 +88,11 @@ function createHeart() {
     heart.className = "heart";
     heart.innerHTML = "❤";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.fontSize = (14 + Math.random() * 20) + "px";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 6000);
 }
-setInterval(createHeart, 500);
+setInterval(createHeart, 600);
 </script>
 
 </body>
